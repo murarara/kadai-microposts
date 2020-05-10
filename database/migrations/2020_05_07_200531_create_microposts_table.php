@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMicroposts2Table extends Migration
+class CreateMicropostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMicroposts2Table extends Migration
      */
     public function up()
     {
-        Schema::create('microposts2', function (Blueprint $table) {
+        Schema::create('microposts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('content');
@@ -26,6 +26,6 @@ class CreateMicroposts2Table extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('microposts2');
+        Schema::dropIfExists('microposts');
     }
 }
