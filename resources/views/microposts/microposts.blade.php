@@ -14,6 +14,20 @@
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
+                    
+                    <div>
+                        @if (Auth::user()->is_favorite($micropost->id))
+                            {{-- アンファボボタンのフォーム --}}
+                            {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('UnFavorite', ['class' => "btn btn-success btn-sm"]) !!}
+                            {!! Form::close() !!}
+                        @else
+                            {{-- ファボボタンのフォーム --}}
+                            {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+                                {!! Form::submit('Favorite', ['class' => "btn btn-ligft btn-sm"]) !!}
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
                     <div>
                         @if (Auth::id() == $micropost->user_id)
                             {{-- 投稿削除ボタンのフォーム --}}
